@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Ticket</title>
+</head>
+<body>
+    <h1>Select a Ticket</h1>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if ticket %}
+        <h2>{{ ticket.event }}</h2>
+        <form method="post" action="{{ url_for('main.book', ticket_id=ticket.id) }}">
+            <button type="submit">Book Ticket</button>
+        </form>
+    {% else %}
+        <p>No ticket found.</p>
+    {% endif %}
+    <a href="{{ url_for('main.index') }}">Back to Tickets</a>
+</body>
+</html>

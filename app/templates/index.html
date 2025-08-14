@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Booking System</title>
+</head>
+<body>
+    <h1>Welcome to the Ticket Booking System</h1>
+    <h2>Available Tickets</h2>
+    <ul>
+        {% for ticket in tickets %}
+            <li>
+                {{ ticket.event }} - {% if ticket.available %}Available{% else %}Booked{% endif %}
+                {% if ticket.available %}
+                    <a href="{{ url_for('main.select', ticket_id=ticket.id) }}">Book Now</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
